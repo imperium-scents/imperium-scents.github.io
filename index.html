@@ -10,17 +10,24 @@
         header { background: #000; color: #d4af37; padding: 40px; border-bottom: 4px solid #d4af37; }
         h1 { margin: 0; letter-spacing: 4px; text-transform: uppercase; font-size: 32px; }
         .subtitulo { color: #d4af37; font-size: 14px; letter-spacing: 2px; }
+        
         .contenedor { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
+        .seccion-titulo { width: 100%; color: #000; margin-top: 40px; border-bottom: 2px solid #d4af37; padding-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
+        
         .tarjeta { background: #fff; border: 1px solid #eee; width: 260px; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; }
+        .tarjeta:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(0,0,0,0.1); }
+        .foto-placeholder { width: 100px; height: 100px; background: #f9f9f9; border: 1px dashed #d4af37; border-radius: 50%; margin: 0 auto 15px; display: flex; align-items: center; justify-content: center; font-size: 40px; }
+        
         .precio { font-size: 24px; color: #d4af37; font-weight: bold; margin: 15px 0; }
         .btn-comprar { background: #000; color: #fff; border: 1px solid #000; padding: 12px; width: 100%; border-radius: 5px; cursor: pointer; font-weight: bold; text-transform: uppercase; }
-        
-        /* FORMULARIO DE ENVÍO (OCULTO AL INICIO) */
+        .btn-comprar:hover { background: #d4af37; color: #000; }
+
+        /* FORMULARIO POST-PAGO */
         #formulario-exito { display: none; background: #fff; max-width: 450px; margin: 30px auto; padding: 25px; border: 2px solid #d4af37; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1); }
         .campo { margin-bottom: 15px; text-align: left; }
         .campo label { display: block; font-weight: bold; margin-bottom: 5px; }
         .campo input, .campo select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; }
-        .btn-enviar-datos { background: #25d366; color: white; border: none; padding: 15px; width: 100%; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 16px; }
+        .btn-whatsapp { background: #25d366; color: white; border: none; padding: 15px; width: 100%; border-radius: 5px; font-weight: bold; cursor: pointer; font-size: 16px; }
     </style>
 </head>
 <body>
@@ -30,41 +37,50 @@
     <p class="subtitulo">FRAGANCIAS • MODA • ACCESORIOS</p>
 </header>
 
-<!-- ESTE FORMULARIO APARECERÁ LUEGO DEL PAGO -->
+<!-- FORMULARIO OCULTO HASTA QUE PAGUEN -->
 <div id="formulario-exito">
-    <h2 style="color: #d4af37;">¡Pago Exitoso! 🎉</h2>
-    <p>Por favor, completa tus datos para el envío:</p>
+    <h2 style="color: #d4af37;">¡Pago Exitoso! 💳</h2>
+    <p>Completa tus datos para enviarte el paquete por <b>Shalom u Olva</b>:</p>
+    <div class="campo"><label>Nombre:</label><input type="text" id="env_nom"></div>
+    <div class="campo"><label>DNI:</label><input type="text" id="env_dni"></div>
     <div class="campo">
-        <label>Nombre del que recibe:</label>
-        <input type="text" id="envio_nombre" placeholder="Nombre completo">
+        <label>Agencia:</label>
+        <select id="env_age"><option value="SHALOM">SHALOM</option><option value="OLVA">OLVA COURIER</option></select>
     </div>
-    <div class="campo">
-        <label>Agencia de Envío:</label>
-        <select id="envio_agencia">
-            <option value="SHALOM">SHALOM (Recojo en agencia)</option>
-            <option value="OLVA">OLVA COURIER (A domicilio)</option>
-        </select>
-    </div>
-    <div class="campo">
-        <label>Ciudad y Dirección:</label>
-        <input type="text" id="envio_destino" placeholder="Ej. Huaraz - Jr. Comercio 123">
-    </div>
-    <button class="btn-enviar-datos" onclick="enviarWhatsApp()">Enviar datos por WhatsApp 📱</button>
+    <div class="campo"><label>Ciudad/Dirección:</label><input type="text" id="env_dir"></div>
+    <button class="btn-whatsapp" onclick="enviarWhatsApp()">Enviar datos al WhatsApp de la tienda 📱</button>
 </div>
 
 <div class="contenedor" id="tienda">
+    
+    <h2 class="seccion-titulo">✨ Fragancias</h2>
     <div class="tarjeta">
+        <div class="foto-placeholder">💎</div>
         <h3>Imperial Gold</h3>
-        <p>Esencia amaderada 100ml</p>
         <div class="precio">S/ 180.00</div>
-        <button class="btn-comprar" onclick="pagar(18000, 'Imperial Gold')">Comprar ahora</button>
+        <button class="btn-comprar" onclick="pagar(18000, 'Imperial Gold')">Comprar</button>
     </div>
-    <!-- Puedes agregar más tarjetas aquí -->
+
+    <h2 class="seccion-titulo">🧥 Ropa</h2>
+    <div class="tarjeta">
+        <div class="foto-placeholder">🧥</div>
+        <h3>Casaca Black</h3>
+        <div class="precio">S/ 250.00</div>
+        <button class="btn-comprar" onclick="pagar(25000, 'Casaca Black')">Comprar</button>
+    </div>
+
+    <h2 class="seccion-titulo">⌚ Accesorios</h2>
+    <div class="tarjeta">
+        <div class="foto-placeholder">⌚</div>
+        <h3>Reloj Onyx</h3>
+        <div class="precio">S/ 320.00</div>
+        <button class="btn-comprar" onclick="pagar(32000, 'Reloj Onyx')">Comprar</button>
+    </div>
+
 </div>
 
 <script>
-    // ⚠️ PON TU LLAVE PK_TEST AQUÍ
-    Culqi.publicKey = 'pk_test_AQUI_VA_TU_CODIGO';
+    Culqi.publicKey = 'pk_test_TU_LLAVE_AQUI'; // PEGA AQUÍ TU LLAVE DE CULQI
 
     function pagar(monto, producto) {
         Culqi.settings({
@@ -78,32 +94,26 @@
 
     function culqi() {
         if (Culqi.token) {
-            // EL PAGO FUE EXITOSO: OCULTAMOS TIENDA Y MOSTRAMOS FORMULARIO
             document.getElementById('tienda').style.display = 'none';
             document.getElementById('cabecera').style.display = 'none';
             document.getElementById('formulario-exito').style.display = 'block';
-            console.log("Pago exitoso. ID:", Culqi.token.id);
+            alert("¡Pago Confirmado! Por favor llena tus datos de envío.");
         } else {
-            alert("Error en el pago: " + Culqi.error.message);
+            alert("Error: " + Culqi.error.message);
         }
     };
 
     function enviarWhatsApp() {
-        const nombre = document.getElementById('envio_nombre').value;
-        const agencia = document.getElementById('envio_agencia').value;
-        const destino = document.getElementById('envio_destino').value;
+        const nom = document.getElementById('env_nom').value;
+        const dni = document.getElementById('env_dni').value;
+        const age = document.getElementById('env_age').value;
+        const dir = document.getElementById('env_dir').value;
 
-        if(nombre === "" || destino === "") {
-            alert("Por favor completa los datos de envío.");
-            return;
-        }
+        if(!nom || !dir) return alert("Completa los datos");
 
-        // REEMPLAZA ESTE NÚMERO CON TU WHATSAPP (CON EL 51 ADELANTE)
-        const miNumero = "51900000000"; 
-        const mensaje = `Hola *Imperium Scents*, acabo de realizar mi pago. Aquí mis datos de envío:\n\n*Nombre:* ${nombre}\n*Agencia:* ${agencia}\n*Destino:* ${destino}`;
-        
-        const urlWhastapp = `https://api.whatsapp.com{miNumero}&text=${encodeURIComponent(mensaje)}`;
-        window.open(urlWhastapp, '_blank');
+        const miNumero = "51900000000"; // CAMBIA POR TU NÚMERO
+        const msj = `Hola *Imperium Scents*, pagué mi pedido.\n\n*Nombre:* ${nom}\n*DNI:* ${dni}\n*Agencia:* ${age}\n*Destino:* ${dir}`;
+        window.open(`https://api.whatsapp.com{miNumero}&text=${encodeURIComponent(msj)}`, '_blank');
     }
 </script>
 
