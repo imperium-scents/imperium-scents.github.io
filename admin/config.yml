@@ -1,6 +1,6 @@
 backend:
   name: github
-  repo: imperium-scents/aromas-del-imperio # Asegúrate de que este sea el nombre exacto de tu repo
+  repo: imperium-scents/imperium-scents.github.io # Nombre actual de tu repositorio
   branch: main
 
 media_folder: "images"
