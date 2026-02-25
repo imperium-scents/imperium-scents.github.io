@@ -1,8 +1,11 @@
 backend:
-  name: git-gateway
+  name: github
+  repo: imperium-scents/aromas-del-imperio # Asegúrate de que este sea el nombre exacto de tu repo
   branch: main
+
 media_folder: "images"
 public_folder: "/images"
+
 collections:
   - name: "productos"
     label: "Mis Productos"
