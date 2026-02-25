@@ -4,10 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Imperium Scents | Tienda Oficial</title>
-    
     <!-- LIBRERÍA DE PAGOS CULQI -->
     <script src="https://checkout.culqi.com"></script>
-
     <style>
         body { font-family: 'Segoe UI', sans-serif; background: #fafafa; margin: 0; text-align: center; color: #333; }
         header { background: #000; color: #d4af37; padding: 40px; border-bottom: 4px solid #d4af37; }
@@ -19,7 +17,14 @@
         .tarjeta:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(0,0,0,0.1); }
         .foto-placeholder { width: 120px; height: 120px; background: #f9f9f9; border: 1px dashed #d4af37; border-radius: 50%; margin: 0 auto 20px; display: flex; align-items: center; justify-content: center; font-size: 50px; }
         .precio { font-size: 24px; color: #d4af37; font-weight: bold; margin: 15px 0; }
-        .descripcion { font-size: 14px; color: #666; min-height: 40px; }
+        
+        /* ESTILOS DEL FORMULARIO DE ENVÍO */
+        .formulario-envio { background: #fff; max-width: 500px; margin: 20px auto; padding: 20px; border: 1px solid #d4af37; border-radius: 10px; text-align: left; }
+        .formulario-envio h3 { color: #000; text-align: center; border-bottom: 1px solid #eee; padding-bottom: 10px; }
+        .campo { margin-bottom: 15px; }
+        .campo label { display: block; font-weight: bold; margin-bottom: 5px; font-size: 14px; }
+        .campo input, .campo select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; }
+        
         .btn-comprar { background: #000; color: #fff; border: 1px solid #000; padding: 12px; width: 100%; border-radius: 5px; cursor: pointer; font-weight: bold; text-transform: uppercase; transition: 0.3s; }
         .btn-comprar:hover { background: #d4af37; border-color: #d4af37; color: #000; }
     </style>
@@ -31,12 +36,37 @@
     <p class="subtitulo">FRAGANCIAS • MODA • ACCESORIOS</p>
 </header>
 
+<!-- FORMULARIO DE DATOS DE ENVÍO -->
+<div class="formulario-envio" id="seccion-envio">
+    <h3>📦 Datos para el Envío</h3>
+    <div class="campo">
+        <label>Nombre Completo de quien recibe:</label>
+        <input type="text" id="nombre_cliente" placeholder="Ej. Alondra Perez">
+    </div>
+    <div class="campo">
+        <label>DNI:</label>
+        <input type="text" id="dni_cliente" placeholder="Número de documento">
+    </div>
+    <div class="campo">
+        <label>Agencia de Preferencia:</label>
+        <select id="agencia_envio">
+            <option value="SHALOM">SHALOM (Recojo en agencia)</option>
+            <option value="OLVA">OLVA COURIER (A domicilio)</option>
+        </select>
+    </div>
+    <div class="campo">
+        <label>Ciudad / Destino:</label>
+        <input type="text" id="ciudad_destino" placeholder="Ej. Huaraz, Lima, Trujillo...">
+    </div>
+    <p style="font-size: 12px; color: #666;">* Llena estos datos antes de presionar el botón de compra.</p>
+</div>
+
 <div class="contenedor">
     <h2 class="seccion-titulo">✨ Fragancias Exclusivas</h2>
     <div class="tarjeta">
         <div class="foto-placeholder">💎</div>
         <h3>Imperial Gold</h3>
-        <p class="descripcion">Esencia amaderada intensa 100ml</p>
+        <p>Esencia amaderada intensa 100ml</p>
         <div class="precio">S/ 180.00</div>
         <button class="btn-comprar" onclick="pagar(18000, 'Imperial Gold')">Comprar</button>
     </div>
@@ -45,35 +75,31 @@
     <div class="tarjeta">
         <div class="foto-placeholder">🧥</div>
         <h3>Casaca Premium</h3>
-        <p class="descripcion">Cuero sintético - Corte Slim Fit</p>
+        <p>Cuero sintético - Slim Fit</p>
         <div class="precio">S/ 250.00</div>
         <button class="btn-comprar" onclick="pagar(25000, 'Casaca Premium')">Comprar</button>
-    </div>
-
-    <h2 class="seccion-titulo">⌚ Accesorios de Lujo</h2>
-    <div class="tarjeta">
-        <div class="foto-placeholder">⌚</div>
-        <h3>Reloj Onyx Black</h3>
-        <p class="descripcion">Acero inoxidable - Resistente al agua</p>
-        <div class="precio">S/ 320.00</div>
-        <button class="btn-comprar" onclick="pagar(32000, 'Reloj Onyx')">Comprar</button>
     </div>
 </div>
 
 <script>
-    // PEGA AQUÍ TU LLAVE PK_TEST DE CULQI
-    var llavePublica = 'pk_test_AQUI_VA_TU_CODIGO';
+    // ⚠️ RECUERDA PEGAR TU LLAVE PK_TEST AQUÍ
+    Culqi.publicKey = 'pk_test_AQUI_VA_TU_CODIGO';
 
     function pagar(monto, producto) {
-        if(typeof Culqi === 'undefined') {
-            alert("Error: La pasarela de pago no cargó correctamente.");
+        // VALIDAR QUE LOS DATOS DE ENVÍO ESTÉN LLENOS
+        const nombre = document.getElementById('nombre_cliente').value;
+        const ciudad = document.getElementById('ciudad_destino').value;
+        const agencia = document.getElementById('agencia_envio').value;
+
+        if (nombre === "" || ciudad === "") {
+            alert("Por favor, completa los datos de envío antes de pagar.");
             return;
         }
-        Culqi.publicKey = llavePublica;
+
         Culqi.settings({
             title: 'Imperium Scents',
             currency: 'PEN',
-            description: producto,
+            description: producto + ' - Envío por ' + agencia + ' a ' + ciudad,
             amount: monto
         });
         Culqi.open();
@@ -81,11 +107,14 @@
 
     function culqi() {
         if (Culqi.token) {
-            alert("¡Éxito! Token generado: " + Culqi.token.id);
+            const nombre = document.getElementById('nombre_cliente').value;
+            const agencia = document.getElementById('agencia_envio').value;
+            alert("¡Éxito! Pago recibido. Enviaremos tu pedido a nombre de " + nombre + " vía " + agencia);
+            console.log("Token de pago:", Culqi.token.id);
         } else {
             alert("Error: " + Culqi.error.message);
         }
-    }
+    };
 </script>
 
 </body>
