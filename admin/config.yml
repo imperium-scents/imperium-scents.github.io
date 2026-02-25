@@ -2,7 +2,7 @@ backend:
   name: github
   repo: imperium-scents/imperium-scents.github.io
   branch: main
-  auth_type: token # <--- ESTA LÍNEA ES LA QUE ACTIVA EL CUADRO DEL TOKEN
+  auth_type: token # Esto es lo que activa el cuadro manual
 
 media_folder: "images"
 public_folder: "/images"
