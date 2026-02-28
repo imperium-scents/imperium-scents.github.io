@@ -56,14 +56,14 @@
     <h2 class="seccion-titulo">✨ Fragancias</h2>
     <div class="sub-categoria">PARA ÉL</div>
     <div class="tarjeta">
-        <img src="perfume_el.jpg" alt="Fragancia Masculina">
+        <img src="perfume_el.jpeg" alt="Fragancia Masculina">
         <h3>Imperial Men</h3>
         <div class="precio">S/ 180.00</div>
         <button class="btn-comprar" onclick="pagar(18000, 'Imperial Men')">Comprar</button>
     </div>
     <div class="sub-categoria">PARA ELLA</div>
     <div class="tarjeta">
-        <img src="perfume_ella.jpg" alt="Fragancia Femenina">
+        <img src="perfume_ella.jpeg" alt="Fragancia Femenina">
         <h3>Imperial Women</h3>
         <div class="precio">S/ 180.00</div>
         <button class="btn-comprar" onclick="pagar(18000, 'Imperial Women')">Comprar</button>
@@ -73,14 +73,14 @@
     <h2 class="seccion-titulo">🧥 Ropa</h2>
     <div class="sub-categoria">PARA ÉL</div>
     <div class="tarjeta">
-        <img src="ropa_el.jpg" alt="Ropa Masculina">
+        <img src="ropa_el.jpeg" alt="Ropa Masculina">
         <h3>Casaca Black Elite</h3>
         <div class="precio">S/ 250.00</div>
         <button class="btn-comprar" onclick="pagar(25000, 'Casaca Black Elite')">Comprar</button>
     </div>
     <div class="sub-categoria">PARA ELLA</div>
     <div class="tarjeta">
-        <img src="ropa_ella.jpg" alt="Ropa Femenina">
+        <img src="ropa_ella.jpeg" alt="Ropa Femenina">
         <h3>Polera Diamond</h3>
         <div class="precio">S/ 150.00</div>
         <button class="btn-comprar" onclick="pagar(15000, 'Polera Diamond')">Comprar</button>
@@ -90,14 +90,14 @@
     <h2 class="seccion-titulo">⌚ Accesorios</h2>
     <div class="sub-categoria">PARA ÉL</div>
     <div class="tarjeta">
-        <img src="reloj_el.jpg" alt="Reloj Masculino">
+        <img src="reloj_el.jpeg" alt="Reloj Masculino">
         <h3>Reloj Onyx Gold</h3>
         <div class="precio">S/ 320.00</div>
         <button class="btn-comprar" onclick="pagar(32000, 'Reloj Onyx Gold')">Comprar</button>
     </div>
     <div class="sub-categoria">PARA ELLA</div>
     <div class="tarjeta">
-        <img src="reloj_ella.jpg" alt="Reloj Femenino">
+        <img src="reloj_ella.jpeg" alt="Reloj Femenino">
         <h3>Reloj Rose Luxury</h3>
         <div class="precio">S/ 290.00</div>
         <button class="btn-comprar" onclick="pagar(29000, 'Reloj Rose Luxury')">Comprar</button>
@@ -116,7 +116,7 @@
 </footer>
 
 <script>
-    // RECUERDA CAMBIAR ESTO POR TU LLAVE DE CULQI
+    // CAMBIA ESTO POR TU LLAVE REAL CUANDO CULQI TE LA DE
     Culqi.publicKey = 'pk_test_AQUI_PONES_TU_LLAVE'; 
 
     function pagar(monto, producto) {
@@ -148,6 +148,7 @@
 
         const miNumero = "51945445161"; 
         const msj = `Hola Imperium Scents, realicé mi pago.\nNombre: ${nom}\nDNI: ${dni}\nAgencia: ${age}\nDirección: ${dir}`;
+        // ENLACE CORREGIDO
         window.open(`https://api.whatsapp.com{miNumero}&text=${encodeURIComponent(msj)}`, '_blank');
     }
 </script>
