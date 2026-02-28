@@ -89,7 +89,6 @@
 <footer>
     <p>RUC: 10701774162 | Imperium Scents © 2024</p>
 </footer>
-
 <script>
     let prodActual = "";
 
@@ -108,18 +107,22 @@
         const age = document.getElementById('age').value;
         const dir = document.getElementById('dir').value;
 
-        if(!nom || !dni || !dir) return alert("Completa los datos de envío.");
+        if(!nom || !dni || !dir) {
+            return alert("Por favor, completa todos los datos de envío.");
+        }
 
         const miNumero = "51945445161"; 
-        const msj = `Hola *Imperium Scents*, pagué S/ 70 por: *${prodActual}*.\n\n*DATOS DE ENVÍO:*\n- *Nombre:* ${nom}\n- *DNI:* ${dni}\n- *Agencia:* ${age}\n- *Destino:* ${dir}`;
+        const msj = `Hola Imperium Scents, pagué S/ 70 por: ${prodActual}.\n\nDATOS DE ENVÍO:\n- Nombre: ${nom}\n- DNI: ${dni}\n- Agencia: ${age}\n- Destino: ${dir}`;
         
-        // ESTA ES LA LÍNEA CORREGIDA (Sin llaves y con /send?phone=)
-        const url = "https://api.whatsapp.com" + miNumero + "&text=" + encodeURIComponent(msj);
+        // RUTA WA.ME (Más segura para celulares)
+        const urlFinal = "https://wa.me/" + miNumero + "?text=" + encodeURIComponent(msj);
         
-        window.open(url, '_blank');
+        window.open(urlFinal, '_blank');
         cerrarPago();
     }
 </script>
+
+
 
 
 
