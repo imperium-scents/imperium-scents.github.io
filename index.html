@@ -14,10 +14,10 @@
         .subtitulo { color: #d4af37; font-size: 14px; letter-spacing: 2px; }
         .contenedor { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
         .seccion-titulo { width: 100%; color: #000; margin-top: 40px; border-bottom: 2px solid #d4af37; padding-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; font-size: 24px; }
-        .sub-categoria { width: 100%; color: #d4af37; font-weight: bold; font-size: 18px; margin-top: 20px; text-decoration: underline; }
+        .sub-categoria { width: 100%; color: #d4af37; font-weight: bold; font-size: 18px; margin-top: 20px; text-align: center; width: 100%; }
         .tarjeta { background: #fff; border: 1px solid #eee; width: 260px; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; }
         .tarjeta:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(0,0,0,0.1); }
-        .tarjeta img { width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; background: #eee; }
+        .tarjeta img { width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; background: #f0f0f0; }
         .precio { font-size: 24px; color: #d4af37; font-weight: bold; margin: 15px 0; }
         .btn-comprar { background: #000; color: #fff; border: 1px solid #000; padding: 12px; width: 100%; border-radius: 5px; cursor: pointer; font-weight: bold; text-transform: uppercase; }
         
@@ -40,7 +40,7 @@
 
 <div id="formulario-exito">
     <h2 style="color: #d4af37;">¡Pago Exitoso! 💳</h2>
-    <p>Completa tus datos para el envío (Shalom / Olva):</p>
+    <p>Completa tus datos para el envío:</p>
     <div class="campo"><label>Nombre:</label><input type="text" id="env_nom"></div>
     <div class="campo"><label>DNI:</label><input type="text" id="env_dni"></div>
     <div class="campo"><label>Agencia:</label>
@@ -97,7 +97,7 @@
     </div>
     <div class="sub-categoria">PARA ELLA</div>
     <div class="tarjeta">
-        <img src="reloj_ella.jpg" alt="Accesorio Femenino">
+        <img src="reloj_ella.jpg" alt="Reloj Femenino">
         <h3>Reloj Rose Luxury</h3>
         <div class="precio">S/ 290.00</div>
         <button class="btn-comprar" onclick="pagar(29000, 'Reloj Rose Luxury')">Comprar</button>
@@ -112,10 +112,11 @@
         <a href="#">Libro de Reclamaciones</a>
     </div>
     <p>© 2024 Imperium Scents - Todos los derechos reservados.</p>
-    <p>RUC: [TU_RUC_AQUÍ] | Contacto: +51 945 445 161</p>
+    <p>RUC: 10701774162 | Contacto: +51 945 445 161</p>
 </footer>
 
 <script>
+    // RECUERDA CAMBIAR ESTO POR TU LLAVE DE CULQI
     Culqi.publicKey = 'pk_test_AQUI_PONES_TU_LLAVE'; 
 
     function pagar(monto, producto) {
