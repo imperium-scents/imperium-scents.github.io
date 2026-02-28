@@ -13,15 +13,15 @@
         h1 { margin: 0; letter-spacing: 4px; text-transform: uppercase; font-size: 32px; }
         .subtitulo { color: #d4af37; font-size: 14px; letter-spacing: 2px; }
         .contenedor { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
-        .seccion-titulo { width: 100%; color: #000; margin-top: 40px; border-bottom: 2px solid #d4af37; padding-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; }
+        .seccion-titulo { width: 100%; color: #000; margin-top: 40px; border-bottom: 2px solid #d4af37; padding-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; font-size: 24px; }
+        .sub-categoria { width: 100%; color: #d4af37; font-weight: bold; font-size: 18px; margin-top: 20px; text-decoration: underline; }
         .tarjeta { background: #fff; border: 1px solid #eee; width: 260px; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; }
-        .tarjeta img { width: 100%; height: 200px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; }
+        .tarjeta:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(0,0,0,0.1); }
+        .tarjeta img { width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; background: #eee; }
         .precio { font-size: 24px; color: #d4af37; font-weight: bold; margin: 15px 0; }
         .btn-comprar { background: #000; color: #fff; border: 1px solid #000; padding: 12px; width: 100%; border-radius: 5px; cursor: pointer; font-weight: bold; text-transform: uppercase; }
         
-        /* SECCIÓN LEGAL OBLIGATORIA PARA CULQI */
         footer { background: #f1f1f1; padding: 30px; margin-top: 50px; font-size: 12px; border-top: 1px solid #ddd; }
-        .links-legales { margin-bottom: 10px; }
         .links-legales a { color: #333; margin: 0 10px; text-decoration: none; font-weight: bold; }
 
         #formulario-exito { display: none; background: #fff; max-width: 450px; margin: 30px auto; padding: 25px; border: 2px solid #d4af37; border-radius: 15px; }
@@ -40,33 +40,69 @@
 
 <div id="formulario-exito">
     <h2 style="color: #d4af37;">¡Pago Exitoso! 💳</h2>
-    <p>Completa tus datos para enviarte el paquete por <b>Shalom u Olva</b>:</p>
+    <p>Completa tus datos para el envío (Shalom / Olva):</p>
     <div class="campo"><label>Nombre:</label><input type="text" id="env_nom"></div>
     <div class="campo"><label>DNI:</label><input type="text" id="env_dni"></div>
     <div class="campo"><label>Agencia:</label>
         <select id="env_age"><option value="SHALOM">SHALOM</option><option value="OLVA">OLVA COURIER</option></select>
     </div>
     <div class="campo"><label>Ciudad/Dirección:</label><input type="text" id="env_dir"></div>
-    <button class="btn-whatsapp" onclick="enviarWhatsApp()">Enviar datos al WhatsApp 📱</button>
+    <button class="btn-whatsapp" onclick="enviarWhatsApp()">Enviar datos por WhatsApp 📱</button>
 </div>
 
 <div class="contenedor" id="tienda">
+    
+    <!-- FRAGANCIAS -->
     <h2 class="seccion-titulo">✨ Fragancias</h2>
+    <div class="sub-categoria">PARA ÉL</div>
     <div class="tarjeta">
-        <!-- REEMPLAZA "perfume.jpg" POR EL NOMBRE DE TU FOTO SUBIDA A GITHUB -->
-        <img src="perfume.jpg" alt="Imperial Gold">
-        <h3>Imperial Gold</h3>
+        <img src="perfume_el.jpg" alt="Fragancia Masculina">
+        <h3>Imperial Men</h3>
         <div class="precio">S/ 180.00</div>
-        <button class="btn-comprar" onclick="pagar(18000, 'Imperial Gold')">Comprar</button>
+        <button class="btn-comprar" onclick="pagar(18000, 'Imperial Men')">Comprar</button>
+    </div>
+    <div class="sub-categoria">PARA ELLA</div>
+    <div class="tarjeta">
+        <img src="perfume_ella.jpg" alt="Fragancia Femenina">
+        <h3>Imperial Women</h3>
+        <div class="precio">S/ 180.00</div>
+        <button class="btn-comprar" onclick="pagar(18000, 'Imperial Women')">Comprar</button>
     </div>
 
+    <!-- ROPA -->
     <h2 class="seccion-titulo">🧥 Ropa</h2>
+    <div class="sub-categoria">PARA ÉL</div>
     <div class="tarjeta">
-        <img src="casaca.jpg" alt="Casaca Black">
-        <h3>Casaca Black</h3>
+        <img src="ropa_el.jpg" alt="Ropa Masculina">
+        <h3>Casaca Black Elite</h3>
         <div class="precio">S/ 250.00</div>
-        <button class="btn-comprar" onclick="pagar(25000, 'Casaca Black')">Comprar</button>
+        <button class="btn-comprar" onclick="pagar(25000, 'Casaca Black Elite')">Comprar</button>
     </div>
+    <div class="sub-categoria">PARA ELLA</div>
+    <div class="tarjeta">
+        <img src="ropa_ella.jpg" alt="Ropa Femenina">
+        <h3>Polera Diamond</h3>
+        <div class="precio">S/ 150.00</div>
+        <button class="btn-comprar" onclick="pagar(15000, 'Polera Diamond')">Comprar</button>
+    </div>
+
+    <!-- ACCESORIOS -->
+    <h2 class="seccion-titulo">⌚ Accesorios</h2>
+    <div class="sub-categoria">PARA ÉL</div>
+    <div class="tarjeta">
+        <img src="reloj_el.jpg" alt="Reloj Masculino">
+        <h3>Reloj Onyx Gold</h3>
+        <div class="precio">S/ 320.00</div>
+        <button class="btn-comprar" onclick="pagar(32000, 'Reloj Onyx Gold')">Comprar</button>
+    </div>
+    <div class="sub-categoria">PARA ELLA</div>
+    <div class="tarjeta">
+        <img src="reloj_ella.jpg" alt="Accesorio Femenino">
+        <h3>Reloj Rose Luxury</h3>
+        <div class="precio">S/ 290.00</div>
+        <button class="btn-comprar" onclick="pagar(29000, 'Reloj Rose Luxury')">Comprar</button>
+    </div>
+
 </div>
 
 <footer>
@@ -98,7 +134,7 @@
             document.getElementById('cabecera').style.display = 'none';
             document.getElementById('formulario-exito').style.display = 'block';
         } else {
-            console.log(Culqi.error.message);
+            alert("Error: " + Culqi.error.message);
         }
     };
 
@@ -107,10 +143,10 @@
         const dni = document.getElementById('env_dni').value;
         const age = document.getElementById('env_age').value;
         const dir = document.getElementById('env_dir').value;
-        if(!nom || !dir) return alert("Por favor completa los datos.");
+        if(!nom || !dir) return alert("Completa los datos de envío.");
 
         const miNumero = "51945445161"; 
-        const msj = `Hola *Imperium Scents*, realicé mi pago.\n*Nombre:* ${nom}\n*DNI:* ${dni}\n*Agencia:* ${age}\n*Destino:* ${dir}`;
+        const msj = `Hola Imperium Scents, realicé mi pago.\nNombre: ${nom}\nDNI: ${dni}\nAgencia: ${age}\nDirección: ${dir}`;
         window.open(`https://api.whatsapp.com{miNumero}&text=${encodeURIComponent(msj)}`, '_blank');
     }
 </script>
