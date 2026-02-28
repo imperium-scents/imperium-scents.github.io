@@ -55,15 +55,26 @@
     <!-- FRAGANCIAS -->
     <h2 class="seccion-titulo">✨ Fragancias</h2>
     <div class="sub-categoria">PARA ÉL</div>
+    
+    <!-- He añadido 3 perfumes para él usando tus fotos de GitHub -->
     <div class="tarjeta">
-        <img src="perfume_el.jpeg" alt="Fragancia Masculina">
-        <h3>Imperial Men</h3>
+        <img src="perfume_el_1.jpeg" alt="Imperial Men 1">
+        <h3>Imperial Men Gold</h3>
         <div class="precio">S/ 180.00</div>
-        <button class="btn-comprar" onclick="pagar(18000, 'Imperial Men')">Comprar</button>
+        <button class="btn-comprar" onclick="pagar(18000, 'Imperial Men Gold')">Comprar</button>
     </div>
+
+    <div class="tarjeta">
+        <img src="perfume_el_2.jpeg" alt="Imperial Men 2">
+        <h3>Imperial Men Black</h3>
+        <div class="precio">S/ 180.00</div>
+        <button class="btn-comprar" onclick="pagar(18000, 'Imperial Men Black')">Comprar</button>
+    </div>
+
     <div class="sub-categoria">PARA ELLA</div>
     <div class="tarjeta">
-        <img src="perfume_ella.jpeg" alt="Fragancia Femenina">
+        <!-- Asegúrate de subir perfume_ella_1.jpeg para que se vea -->
+        <img src="perfume_ella_1.jpeg" alt="Fragancia Femenina">
         <h3>Imperial Women</h3>
         <div class="precio">S/ 180.00</div>
         <button class="btn-comprar" onclick="pagar(18000, 'Imperial Women')">Comprar</button>
@@ -148,7 +159,7 @@
 
         const miNumero = "51945445161"; 
         const msj = `Hola Imperium Scents, realicé mi pago.\nNombre: ${nom}\nDNI: ${dni}\nAgencia: ${age}\nDirección: ${dir}`;
-        // ENLACE CORREGIDO
+        // ENLACE CORREGIDO PARA WHATSAPP
         window.open(`https://api.whatsapp.com{miNumero}&text=${encodeURIComponent(msj)}`, '_blank');
     }
 </script>
