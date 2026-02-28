@@ -14,7 +14,6 @@
         .subtitulo { color: #d4af37; font-size: 14px; letter-spacing: 2px; }
         .contenedor { display: flex; flex-wrap: wrap; justify-content: center; gap: 25px; padding: 40px 20px; max-width: 1200px; margin: 0 auto; }
         .seccion-titulo { width: 100%; color: #000; margin-top: 40px; border-bottom: 2px solid #d4af37; padding-bottom: 10px; text-transform: uppercase; letter-spacing: 2px; font-size: 24px; }
-        .sub-categoria { width: 100%; color: #d4af37; font-weight: bold; font-size: 18px; margin-top: 20px; text-align: center; width: 100%; }
         .tarjeta { background: #fff; border: 1px solid #eee; width: 260px; padding: 25px; border-radius: 12px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; }
         .tarjeta:hover { transform: translateY(-8px); box-shadow: 0 12px 25px rgba(0,0,0,0.1); }
         .tarjeta img { width: 100%; height: 250px; object-fit: cover; border-radius: 8px; margin-bottom: 15px; background: #f0f0f0; }
@@ -35,7 +34,7 @@
 
 <header id="cabecera">
     <h1>IMPERIUM SCENTS</h1>
-    <p class="subtitulo">FRAGANCIAS • MODA • ACCESORIOS</p>
+    <p class="subtitulo">FRAGANCIAS EXCLUSIVAS</p>
 </header>
 
 <div id="formulario-exito">
@@ -51,92 +50,36 @@
 </div>
 
 <div class="contenedor" id="tienda">
+    <h2 class="seccion-titulo">✨ Colección Masculina</h2>
     
-    <!-- FRAGANCIAS -->
-    <h2 class="seccion-titulo">✨ Fragancias</h2>
-    <div class="sub-categoria">PARA ÉL</div>
-    
-    <!-- He añadido 3 perfumes para él usando tus fotos de GitHub -->
-    <div class="tarjeta">
-        <img src="perfume_el_1.jpeg" alt="Imperial Men 1">
-        <h3>Imperial Men Gold</h3>
-        <div class="precio">S/ 180.00</div>
-        <button class="btn-comprar" onclick="pagar(18000, 'Imperial Men Gold')">Comprar</button>
-    </div>
-
-    <div class="tarjeta">
-        <img src="perfume_el_2.jpeg" alt="Imperial Men 2">
-        <h3>Imperial Men Black</h3>
-        <div class="precio">S/ 180.00</div>
-        <button class="btn-comprar" onclick="pagar(18000, 'Imperial Men Black')">Comprar</button>
-    </div>
-
-    <div class="sub-categoria">PARA ELLA</div>
-    <div class="tarjeta">
-        <!-- Asegúrate de subir perfume_ella_1.jpeg para que se vea -->
-        <img src="perfume_ella_1.jpeg" alt="Fragancia Femenina">
-        <h3>Imperial Women</h3>
-        <div class="precio">S/ 180.00</div>
-        <button class="btn-comprar" onclick="pagar(18000, 'Imperial Women')">Comprar</button>
-    </div>
-
-    <!-- ROPA -->
-    <h2 class="seccion-titulo">🧥 Ropa</h2>
-    <div class="sub-categoria">PARA ÉL</div>
-    <div class="tarjeta">
-        <img src="ropa_el.jpeg" alt="Ropa Masculina">
-        <h3>Casaca Black Elite</h3>
-        <div class="precio">S/ 250.00</div>
-        <button class="btn-comprar" onclick="pagar(25000, 'Casaca Black Elite')">Comprar</button>
-    </div>
-    <div class="sub-categoria">PARA ELLA</div>
-    <div class="tarjeta">
-        <img src="ropa_ella.jpeg" alt="Ropa Femenina">
-        <h3>Polera Diamond</h3>
-        <div class="precio">S/ 150.00</div>
-        <button class="btn-comprar" onclick="pagar(15000, 'Polera Diamond')">Comprar</button>
-    </div>
-
-    <!-- ACCESORIOS -->
-    <h2 class="seccion-titulo">⌚ Accesorios</h2>
-    <div class="sub-categoria">PARA ÉL</div>
-    <div class="tarjeta">
-        <img src="reloj_el.jpeg" alt="Reloj Masculino">
-        <h3>Reloj Onyx Gold</h3>
-        <div class="precio">S/ 320.00</div>
-        <button class="btn-comprar" onclick="pagar(32000, 'Reloj Onyx Gold')">Comprar</button>
-    </div>
-    <div class="sub-categoria">PARA ELLA</div>
-    <div class="tarjeta">
-        <img src="reloj_ella.jpeg" alt="Reloj Femenino">
-        <h3>Reloj Rose Luxury</h3>
-        <div class="precio">S/ 290.00</div>
-        <button class="btn-comprar" onclick="pagar(29000, 'Reloj Rose Luxury')">Comprar</button>
-    </div>
-
+    <!-- TARJETAS PARA TUS 12 FOTOS SUBIDAS -->
+    <div class="tarjeta"><img src="perfume_el_1.jpeg"><h3>Imperial Gold 01</h3><div class="precio">S/ 180.00</div><button class="btn-comprar" onclick="pagar(18000, 'Imperial 01')">Comprar</button></div>
+    <div class="tarjeta"><img src="perfume_el_2.jpeg"><h3>Imperial Gold 02</h3><div class="precio">S/ 180.00</div><button class="btn-comprar" onclick="pagar(18000, 'Imperial 02')">Comprar</button></div>
+    <div class="tarjeta"><img src="perfume_el_3.jpeg"><h3>Imperial Gold 03</h3><div class="precio">S/ 180.00</div><button class="btn-comprar" onclick="pagar(18000, 'Imperial 03')">Comprar</button></div>
+    <div class="tarjeta"><img src="perfume_el_4.jpeg"><h3>Imperial Gold 04</h3><div class="precio">S/ 180.00</div><button class="btn-comprar" onclick="pagar(18000, 'Imperial 04')">Comprar</button></div>
+    <div class="tarjeta"><img src="perfume_el_5.jpeg"><h3>Imperial Gold 05</h3><div class="precio">S/ 180.00</div><button class="btn-comprar" onclick="pagar(18000, 'Imperial 05')">Comprar</button></div>
+    <div class="tarjeta"><img src="perfume_el_6.jpeg"><h3>Imperial Gold 06</h3><div class="precio">S/ 180.00</div><button class="btn-comprar" onclick="pagar(18000, 'Imperial 06')">Comprar</button></div>
+    <div class="tarjeta"><img src="perfume_el_7.jpeg"><h3>Imperial Gold 07</h3><div class="precio">S/ 180.00</div><button class="btn-comprar" onclick="pagar(18000, 'Imperial 07')">Comprar</button></div>
+    <div class="tarjeta"><img src="perfume_el_10.jpeg"><h3>Imperial Gold 10</h3><div class="precio">S/ 180.00</div><button class="btn-comprar" onclick="pagar(18000, 'Imperial 10')">Comprar</button></div>
+    <div class="tarjeta"><img src="perfume_el_11.jpeg"><h3>Imperial Gold 11</h3><div class="precio">S/ 180.00</div><button class="btn-comprar" onclick="pagar(18000, 'Imperial 11')">Comprar</button></div>
+    <div class="tarjeta"><img src="perfume_el_12.jpeg"><h3>Imperial Gold 12</h3><div class="precio">S/ 180.00</div><button class="btn-comprar" onclick="pagar(18000, 'Imperial 12')">Comprar</button></div>
+    <div class="tarjeta"><img src="perfume_el_13.jpeg"><h3>Imperial Gold 13</h3><div class="precio">S/ 180.00</div><button class="btn-comprar" onclick="pagar(18000, 'Imperial 13')">Comprar</button></div>
+    <div class="tarjeta"><img src="perfume_el_14.jpeg"><h3>Imperial Gold 14</h3><div class="precio">S/ 180.00</div><button class="btn-comprar" onclick="pagar(18000, 'Imperial 14')">Comprar</button></div>
 </div>
 
 <footer>
     <div class="links-legales">
-        <a href="#">Términos y Condiciones</a> | 
-        <a href="#">Políticas de Privacidad</a> | 
-        <a href="#">Libro de Reclamaciones</a>
+        <a href="#">Términos y Condiciones</a> | <a href="#">Políticas de Privacidad</a> | <a href="#">Libro de Reclamaciones</a>
     </div>
     <p>© 2024 Imperium Scents - Todos los derechos reservados.</p>
     <p>RUC: 10701774162 | Contacto: +51 945 445 161</p>
 </footer>
 
 <script>
-    // CAMBIA ESTO POR TU LLAVE REAL CUANDO CULQI TE LA DE
     Culqi.publicKey = 'pk_test_AQUI_PONES_TU_LLAVE'; 
 
     function pagar(monto, producto) {
-        Culqi.settings({
-            title: 'Imperium Scents',
-            currency: 'PEN',
-            description: producto,
-            amount: monto
-        });
+        Culqi.settings({ title: 'Imperium Scents', currency: 'PEN', description: producto, amount: monto });
         Culqi.open();
     }
 
@@ -159,7 +102,6 @@
 
         const miNumero = "51945445161"; 
         const msj = `Hola Imperium Scents, realicé mi pago.\nNombre: ${nom}\nDNI: ${dni}\nAgencia: ${age}\nDirección: ${dir}`;
-        // ENLACE CORREGIDO PARA WHATSAPP
         window.open(`https://api.whatsapp.com{miNumero}&text=${encodeURIComponent(msj)}`, '_blank');
     }
 </script>
