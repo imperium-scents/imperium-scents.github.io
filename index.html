@@ -116,38 +116,51 @@
     </div>
 </div>
 
-<footer>
-    <p>RUC: 10701774162 | Imperium Scents © 2025</p>
-</footer>
 <script>
-    let prodActual = "";
+    let prodActual = "Perfume Imperium"; 
 
     function abrirPago(nombre) { 
         prodActual = nombre; 
         document.getElementById('modal-pago').style.display = 'block'; 
+        // Bloqueamos el scroll del fondo para mejor experiencia
+        document.body.style.overflow = 'hidden';
     }
 
     function cerrarPago() { 
         document.getElementById('modal-pago').style.display = 'none'; 
+        document.body.style.overflow = 'auto';
+    }
+
+    function moverSlider(id, d) { 
+        document.getElementById(id).scrollBy({ left: d, behavior: 'smooth' }); 
     }
 
     function enviarWhatsApp() {
-        const nom = document.getElementById('nom').value;
-        const dni = document.getElementById('dni').value;
-        const age = document.getElementById('age').value;
-        const dir = document.getElementById('dir').value;
+        // 1. Obtenemos los datos
+        const nombreCliente = document.getElementById('nom').value.trim();
+        const dniCliente = document.getElementById('dni').value.trim();
+        const agenciaEnvio = document.getElementById('age').value;
+        const direccionEnvio = document.getElementById('dir').value.trim();
 
-        if(!nom || !dni || !dir) {
-            return alert("Por favor, completa todos los datos de envío.");
+        // 2. Validamos que nada esté vacío
+        if(nombreCliente === "" || dniCliente === "" || direccionEnvio === "") {
+            alert("⚠️ Por favor, completa todos los campos para procesar tu envío.");
+            return;
         }
 
-        const miNumero = "51945445161"; 
-        const msj = `Hola Imperium Scents, pagué S/ 70 por: ${prodActual}.\n\nDATOS DE ENVÍO:\n- Nombre: ${nom}\n- DNI: ${dni}\n- Agencia: ${age}\n- Destino: ${dir}`;
+        // 3. Formateamos el mensaje para que te llegue ordenado
+        const numeroVentas = "51945445161";
+        const mensajeFinal = "Hola Imperium Scents, acabo de pagar S/ 70 por: " + prodActual + 
+                             "\n\n*MIS DATOS DE ENVÍO:*" + 
+                             "\n- *Nombre:* " + nombreCliente + 
+                             "\n- *DNI:* " + dniCliente + 
+                             "\n- *Agencia:* " + agenciaEnvio + 
+                             "\n- *Destino:* " + direccionEnvio;
+
+        // 4. CREAMOS EL ENLACE (Usamos api.whatsapp para mayor compatibilidad)
+        const urlWhatsApp = "https://api.whatsapp.com" + numeroVentas + "&text=" + encodeURIComponent(mensajeFinal);
         
-        // RUTA WA.ME (Más segura para celulares)
-        const urlFinal = "https://wa.me/" + miNumero + "?text=" + encodeURIComponent(msj);
-        
-        window.open(urlFinal, '_blank');
-        cerrarPago();
+        // 5. REDIRECCIÓN DIRECTA (Esto evita que el navegador lo bloquee)
+        window.location.href = urlWhatsApp;
     }
 </script>
