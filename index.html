@@ -8,52 +8,61 @@
     <style>
         body { font-family: 'Poppins', sans-serif; background: #fafafa; margin: 0; color: #333; scroll-behavior: smooth; overflow-x: hidden; }
         
-        /* HERO - Imagen de fondo */
+        /* HERO - Imagen de fondo hero-bg.jpeg */
         .hero-section { 
             position: relative; height: 100vh; display: flex; align-items: flex-end; justify-content: center; 
-            background: url('hero-bg.jpeg') no-repeat center center/cover; padding-bottom: 60px; 
+            background: url('hero-bg.jpeg') no-repeat center center/cover; padding-bottom: 70px; 
         }
         .hero-overlay { position: absolute; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.1); }
-        .btn-cta { position: relative; z-index: 5; display: inline-block; padding: 18px 45px; background: #d4af37; color: #000; text-decoration: none; font-weight: 600; text-transform: uppercase; border-radius: 4px; border: 2px solid #d4af37; cursor: pointer; }
+        .btn-cta { position: relative; z-index: 10; display: inline-block; padding: 18px 45px; background: #d4af37; color: #000; text-decoration: none; font-weight: 600; text-transform: uppercase; border-radius: 4px; border: 2px solid #d4af37; cursor: pointer; box-shadow: 0 4px 15px rgba(0,0,0,0.3); }
 
-        /* CABECERA */
         header { background: #000; color: #d4af37; padding: 25px; border-bottom: 4px solid #d4af37; text-align: center; }
         
-        /* CARRUSELES */
+        /* CONTENEDOR DE CARRUSELES */
         .seccion-contenedor { padding: 30px 0; max-width: 1200px; margin: 0 auto; position: relative; }
-        .seccion-titulo { font-size: 20px; text-transform: uppercase; margin-left: 20px; border-left: 4px solid #d4af37; padding-left: 15px; text-align: left; }
+        .seccion-titulo { font-size: 20px; text-transform: uppercase; margin-left: 20px; border-left: 4px solid #d4af37; padding-left: 15px; margin-bottom: 10px; }
         
-        .slider-wrapper { position: relative; display: flex; align-items: center; padding: 0 10px; }
+        .slider-wrapper { position: relative; display: flex; align-items: center; padding: 0 15px; }
         .slider-container { 
-            display: flex; overflow-x: scroll; scroll-behavior: smooth; gap: 15px; padding: 20px 0; 
-            scrollbar-width: none; 
+            display: flex; overflow-x: auto; scroll-behavior: smooth; gap: 15px; padding: 20px 0; 
+            scrollbar-width: none; -webkit-overflow-scrolling: touch;
         }
         .slider-container::-webkit-scrollbar { display: none; }
 
-        .tarjeta { flex: 0 0 250px; background: #fff; border: 1px solid #eee; padding: 15px; border-radius: 12px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05); }
-        .tarjeta img { width: 100%; height: 250px; object-fit: cover; border-radius: 10px; margin-bottom: 10px; }
-        .precio { font-size: 20px; color: #d4af37; font-weight: bold; margin-bottom: 12px; }
-        
-        /* BOTÓN COMPRAR */
-        .btn-comprar { 
-            background: #7422ff; color: #fff; border: none; padding: 12px; width: 100%; border-radius: 8px; 
-            cursor: pointer; font-weight: bold; text-transform: uppercase; transition: 0.3s;
+        /* TARJETA REPARADA */
+        .tarjeta { 
+            flex: 0 0 260px; background: #fff; border: 1px solid #eee; padding: 15px; 
+            border-radius: 12px; text-align: center; box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+            position: relative; z-index: 1;
         }
-        .btn-comprar:hover { background: #5a1bcc; }
+        .tarjeta img { width: 100%; height: 260px; object-fit: cover; border-radius: 10px; pointer-events: none; margin-bottom: 10px; }
+        .tarjeta h3 { font-size: 13px; height: 35px; margin: 10px 0; overflow: hidden; }
+        .precio { font-size: 22px; color: #d4af37; font-weight: bold; margin-bottom: 15px; }
+        
+        /* BOTÓN COMPRAR (Z-INDEX ALTO) */
+        .btn-comprar { 
+            background: #7422ff; color: #fff; border: none; padding: 14px; width: 100%; 
+            border-radius: 8px; cursor: pointer; font-weight: bold; text-transform: uppercase;
+            position: relative; z-index: 50 !important;
+        }
 
         /* NAVEGACIÓN */
-        .btn-nav { background: #000; color: #d4af37; border: 2px solid #d4af37; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; position: absolute; z-index: 10; font-weight: bold; }
-        .btn-prev { left: 0; } .btn-next { right: 0; }
+        .btn-nav { background: #000; color: #d4af37; border: 2px solid #d4af37; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; position: absolute; z-index: 100; font-weight: bold; }
+        .btn-prev { left: 5px; } .btn-next { right: 5px; }
 
-        /* MODAL */
-        #modal-pago { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; overflow-y: auto; }
+        /* MODAL DE PAGO */
+        #modal-pago { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 2000; overflow-y: auto; }
         .contenido-pago { background: #fff; max-width: 400px; margin: 40px auto; padding: 30px; border-radius: 20px; text-align: center; position: relative; }
-        .btn-cerrar { position: absolute; right: 20px; top: 10px; font-size: 30px; cursor: pointer; }
+        .btn-cerrar { position: absolute; right: 20px; top: 10px; font-size: 30px; cursor: pointer; color: #888; }
         .qr-yape { width: 180px; margin: 15px 0; border: 4px solid #7422ff; border-radius: 15px; }
         .campo { margin-bottom: 15px; text-align: left; }
         .campo label { display: block; font-weight: bold; font-size: 13px; margin-bottom: 5px; }
-        .campo input, .campo select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; }
-        .btn-finalizar { background: #25d366; color: white; border: none; padding: 16px; width: 100%; border-radius: 10px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        .campo input, .campo select { width: 100%; padding: 12px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; font-size: 16px; }
+        
+        .btn-finalizar { 
+            background: #25d366; color: white; border: none; padding: 18px; width: 100%; 
+            border-radius: 10px; font-weight: bold; cursor: pointer; margin-top: 10px; font-size: 16px;
+        }
     </style>
 </head>
 <body>
@@ -68,7 +77,7 @@
     <p style="color:#d4af37; font-size:12px;">ENVÍOS A TODO EL PERÚ • PAGO CON YAPE</p>
 </header>
 
-<!-- HOMBRES -->
+<!-- COLECCIÓN MASCULINA (14) -->
 <div class="seccion-contenedor">
     <h2 class="seccion-titulo">Para Él (S/ 70.00)</h2>
     <div class="slider-wrapper">
@@ -76,11 +85,11 @@
         <div class="slider-container" id="slider-el">
             <div class="tarjeta"><img src="perfume_el_1.jpeg"><h3>CLUB DE NUIT</h3><div class="precio">S/ 70.00</div><button class="btn-comprar" onclick="abrirPago('Él 01 - Club de Nuit')">Comprar</button></div>
             <div class="tarjeta"><img src="perfume_el_2.jpeg"><h3>SAUVAGE</h3><div class="precio">S/ 70.00</div><button class="btn-comprar" onclick="abrirPago('Él 02 - Sauvage')">Comprar</button></div>
-            <div class="tarjeta"><img src="perfume_el_7.jpeg"><h3>9 PM</h3><div class="precio">S/ 70.00</div><button class="btn-comprar" onclick="abrirPago('Él 07 - 9 PM')">Comprar</button></div>
             <div class="tarjeta"><img src="perfume_el_3.jpeg"><h3>UOMO BORN IN ROMA</h3><div class="precio">S/ 70.00</div><button class="btn-comprar" onclick="abrirPago('Él 03')">Comprar</button></div>
             <div class="tarjeta"><img src="perfume_el_4.jpeg"><h3>ONE MILLION LUCKY</h3><div class="precio">S/ 70.00</div><button class="btn-comprar" onclick="abrirPago('Él 04')">Comprar</button></div>
             <div class="tarjeta"><img src="perfume_el_5.jpeg"><h3>INVICTUS</h3><div class="precio">S/ 70.00</div><button class="btn-comprar" onclick="abrirPago('Él 05')">Comprar</button></div>
             <div class="tarjeta"><img src="perfume_el_6.jpeg"><h3>BADEE AL OUD</h3><div class="precio">S/ 70.00</div><button class="btn-comprar" onclick="abrirPago('Él 06')">Comprar</button></div>
+            <div class="tarjeta"><img src="perfume_el_7.jpeg"><h3>9 PM</h3><div class="precio">S/ 70.00</div><button class="btn-comprar" onclick="abrirPago('Él 07')">Comprar</button></div>
             <div class="tarjeta"><img src="perfume_el_8.jpeg"><h3>EROS</h3><div class="precio">S/ 70.00</div><button class="btn-comprar" onclick="abrirPago('Él 08')">Comprar</button></div>
             <div class="tarjeta"><img src="perfume_el_9.jpeg"><h3>LE MALE</h3><div class="precio">S/ 70.00</div><button class="btn-comprar" onclick="abrirPago('Él 09')">Comprar</button></div>
             <div class="tarjeta"><img src="perfume_el_10.jpeg"><h3>MANDARIN SKY</h3><div class="precio">S/ 70.00</div><button class="btn-comprar" onclick="abrirPago('Él 10')">Comprar</button></div>
@@ -93,7 +102,7 @@
     </div>
 </div>
 
-<!-- MUJERES -->
+<!-- COLECCIÓN FEMENINA (12) -->
 <div class="seccion-contenedor">
     <h2 class="seccion-titulo">Para Ella (S/ 70.00)</h2>
     <div class="slider-wrapper">
@@ -125,25 +134,29 @@
         <img src="yape_qr.jpeg" alt="QR Yape" class="qr-yape">
         <div class="campo"><label>Nombre Completo:</label><input type="text" id="nom"></div>
         <div class="campo"><label>DNI:</label><input type="text" id="dni"></div>
-        <div class="campo"><label>Agencia:</label><select id="age"><option value="SHALOM">SHALOM</option><option value="OLVA">OLVA COURIER</option></select></div>
+        <div class="campo"><label>Agencia:</label>
+            <select id="age">
+                <option value="SHALOM">SHALOM</option>
+                <option value="OLVA">OLVA COURIER</option>
+            </select>
+        </div>
         <div class="campo"><label>Ciudad / Dirección:</label><input type="text" id="dir"></div>
-        <button class="btn-finalizar" onclick="enviarWhatsApp()">CONFIRMAR Y ENVIAR 📱</button>
+        <button type="button" class="btn-finalizar" onclick="enviarWhatsApp()">CONFIRMAR Y ENVIAR 📱</button>
     </div>
 </div>
 
 <script>
-    let prodActual = "Perfume Imperium"; 
+    let prodActual = "";
 
     function abrirPago(nombre) { 
         prodActual = nombre; 
         document.getElementById('modal-pago').style.display = 'block'; 
-        // Bloqueamos el scroll del fondo para mejor experiencia
-        document.body.style.overflow = 'hidden';
+        document.body.style.overflow = 'hidden'; 
     }
 
     function cerrarPago() { 
         document.getElementById('modal-pago').style.display = 'none'; 
-        document.body.style.overflow = 'auto';
+        document.body.style.overflow = 'auto'; 
     }
 
     function moverSlider(id, d) { 
@@ -151,32 +164,21 @@
     }
 
     function enviarWhatsApp() {
-        // 1. Obtenemos los datos
-        const nombreCliente = document.getElementById('nom').value.trim();
-        const dniCliente = document.getElementById('dni').value.trim();
-        const agenciaEnvio = document.getElementById('age').value;
-        const direccionEnvio = document.getElementById('dir').value.trim();
+        const nom = document.getElementById('nom').value.trim();
+        const dni = document.getElementById('dni').value.trim();
+        const age = document.getElementById('age').value;
+        const dir = document.getElementById('dir').value.trim();
 
-        // 2. Validamos que nada esté vacío
-        if(nombreCliente === "" || dniCliente === "" || direccionEnvio === "") {
-            alert("⚠️ Por favor, completa todos los campos para procesar tu envío.");
+        if(nom === "" || dni === "" || dir === "") {
+            alert("⚠️ Por favor, llena todos los datos de envío.");
             return;
         }
 
-        // 3. Formateamos el mensaje para que te llegue ordenado
-        const numeroVentas = "51945445161";
-        const mensajeFinal = "Hola Imperium Scents, acabo de pagar S/ 70 por: " + prodActual + 
-                             "\n\n*MIS DATOS DE ENVÍO:*" + 
-                             "\n- *Nombre:* " + nombreCliente + 
-                             "\n- *DNI:* " + dniCliente + 
-                             "\n- *Agencia:* " + agenciaEnvio + 
-                             "\n- *Destino:* " + direccionEnvio;
-
-        // 4. CREAMOS EL ENLACE (Usamos api.whatsapp para mayor compatibilidad)
-        const urlWhatsApp = "https://api.whatsapp.com" + numeroVentas + "&text=" + encodeURIComponent(mensajeFinal);
+        const miNum = "51945445161";
+        const msj = "Hola Imperium Scents, pagué S/ 70 por: " + prodActual + "\n\n*DATOS DE ENVÍO:*" + "\n- Nombre: " + nom + "\n- DNI: " + dni + "\n- Agencia: " + age + "\n- Destino: " + dir;
         
-        // 5. REDIRECCIÓN DIRECTA (Esto evita que el navegador lo bloquee)
-        window.location.href = urlWhatsApp;
+        // Redirección directa para evitar bloqueos
+        window.location.href = "https://api.whatsapp.com" + miNum + "&text=" + encodeURIComponent(msj);
     }
 </script>
 </body>
