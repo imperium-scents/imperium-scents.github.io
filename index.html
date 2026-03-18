@@ -5,87 +5,86 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Imperium Scents | Tienda Oficial</title>
     <link href="https://fonts.googleapis.com" rel="stylesheet">
-<style>
-    body { 
-        font-family: 'Poppins', sans-serif; 
-        background: #fafafa; 
-        margin: 0; 
-        color: #333; 
-        scroll-behavior: smooth; 
-        overflow-x: hidden; 
-    }
+    <style>
+        /* ESTILOS GENERALES */
+        body { font-family: 'Poppins', sans-serif; background: #fafafa; margin: 0; color: #333; scroll-behavior: smooth; overflow-x: hidden; }
+        
+        /* SECCIÓN HERO CON TU IMAGEN hero-bg.jpeg */
+        .hero-section { 
+            position: relative; 
+            height: 100vh; 
+            display: flex; 
+            align-items: center; 
+            justify-content: center; 
+            color: #fff; 
+            background: url('hero-bg.jpeg') no-repeat center center/cover; 
+            text-align: center; 
+        }
+        .hero-overlay { 
+            position: absolute; top: 0; left: 0; width: 100%; height: 100%; 
+            background: rgba(0, 0, 0, 0.2); /* Capa sutil para que luzca tu foto */
+        }
+        .hero-content { position: relative; z-index: 2; margin-top: 150px; } /* Bajamos el botón para no tapar tu logo */
 
-    .hero-section { 
-        position: relative; 
-        height: 100vh; 
-        display: flex; 
-        align-items: center; 
-        justify-content: center; 
-        color: #fff; 
-        /* AQUÍ ESTÁ TU IMAGEN ACTUALIZADA */
-        background: url('hero-bg.jpeg') no-repeat center center/cover; 
-        text-align: center; 
-    }
+        .btn-cta { 
+            display: inline-block; padding: 16px 40px; background: #d4af37; color: #000; 
+            text-decoration: none; font-weight: 600; text-transform: uppercase; 
+            border-radius: 4px; transition: 0.3s; border: 2px solid #d4af37;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .btn-cta:hover { background: transparent; color: #fff; }
 
-    .hero-overlay { 
-        position: absolute; 
-        top: 0; 
-        left: 0; 
-        width: 100%; 
-        height: 100%; 
-        /* Capa sutil para que el botón resalte sin tapar tu logo */
-        background: rgba(0, 0, 0, 0.3); 
-    }
+        /* CABECERA DE CATÁLOGO */
+        header { background: #000; color: #d4af37; padding: 30px; border-bottom: 4px solid #d4af37; text-align: center; }
+        
+        /* DISEÑO DE GALERÍAS (SLIDERS) */
+        .seccion-contenedor { padding: 40px 0; max-width: 1400px; margin: 0 auto; position: relative; }
+        .seccion-titulo { font-size: 22px; text-transform: uppercase; letter-spacing: 3px; margin: 20px; border-left: 5px solid #d4af37; padding-left: 15px; text-align: left; }
+        
+        .slider-wrapper { position: relative; display: flex; align-items: center; padding: 0 10px; }
+        .slider-container { display: flex; overflow-x: auto; scroll-behavior: smooth; gap: 20px; padding: 20px 10px; scrollbar-width: none; }
+        .slider-container::-webkit-scrollbar { display: none; }
 
-    .hero-content { 
-        position: relative; 
-        z-index: 2; 
-        max-width: 800px; 
-        padding: 20px; 
-        /* Espacio extra arriba para no tapar el texto que ya tiene tu imagen */
-        margin-top: 100px; 
-    }
+        .tarjeta { flex: 0 0 250px; background: #fff; border: 1px solid #eee; padding: 20px; border-radius: 15px; box-shadow: 0 5px 15px rgba(0,0,0,0.05); transition: 0.3s; text-align: center; }
+        .tarjeta:hover { transform: translateY(-10px); box-shadow: 0 15px 30px rgba(0,0,0,0.1); }
+        .tarjeta img { width: 100%; height: 250px; object-fit: cover; border-radius: 10px; margin-bottom: 15px; background: #f9f9f9; }
+        .tarjeta h3 { font-size: 13px; height: 35px; margin: 10px 0; font-weight: 600; }
+        .precio { font-size: 20px; color: #d4af37; font-weight: bold; margin-bottom: 15px; }
+        .btn-comprar { background: #7422ff; color: #fff; border: none; padding: 12px; width: 100%; border-radius: 8px; cursor: pointer; font-weight: bold; text-transform: uppercase; font-size: 12px; }
 
-    .btn-cta { 
-        display: inline-block; 
-        padding: 16px 40px; 
-        background: #d4af37; 
-        color: #000; 
-        text-decoration: none; 
-        font-weight: 600; 
-        text-transform: uppercase; 
-        border-radius: 4px; 
-        transition: 0.3s; 
-        border: 2px solid #d4af37; 
-        box-shadow: 0 4px 15px rgba(0,0,0,0.3);
-    }
+        .btn-nav { background: rgba(0,0,0,0.8); color: #d4af37; border: none; width: 40px; height: 40px; border-radius: 50%; cursor: pointer; position: absolute; z-index: 5; }
+        .btn-prev { left: 5px; } .btn-next { right: 5px; }
 
-    .btn-cta:hover { 
-        background: transparent; 
-        color: #fff; 
-    }
- }
+        /* MODAL DE PAGO */
+        #modal-pago { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 1000; overflow-y: auto; }
+        .contenido-pago { background: #fff; max-width: 420px; margin: 40px auto; padding: 30px; border-radius: 20px; text-align: center; position: relative; }
+        .btn-cerrar { position: absolute; right: 20px; top: 15px; font-size: 30px; cursor: pointer; color: #888; }
+        .qr-yape { width: 180px; border: 4px solid #7422ff; border-radius: 15px; margin: 15px 0; }
+        .campo { margin-bottom: 12px; text-align: left; }
+        .campo label { display: block; font-weight: bold; margin-bottom: 5px; font-size: 13px; }
+        .campo input, .campo select { width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 8px; box-sizing: border-box; }
+        .btn-finalizar { background: #25d366; color: white; border: none; padding: 15px; width: 100%; border-radius: 10px; font-weight: bold; cursor: pointer; font-size: 16px; margin-top: 10px; }
+        footer { background: #f1f1f1; padding: 30px; font-size: 12px; border-top: 1px solid #ddd; text-align: center; }
     </style>
 </head>
 <body>
 
+<!-- SECCIÓN HERO (LUCE TU IMAGEN) -->
 <section class="hero-section">
     <div class="hero-overlay"></div>
     <div class="hero-content">
-        <h1 class="hero-title">Imperium Scents</h1>
-        <p class="hero-subtitle">La esencia del lujo en cada gota. Envíos a todo el Perú.</p>
-        <a href="#catalogo" class="btn-cta">Explorar Catálogo</a>
+        <a href="#catalogo" class="btn-cta">Ver los más vendidos</a>
     </div>
 </section>
 
 <header id="catalogo">
-    <h2 style="margin:0; letter-spacing:3px;">NUESTRAS FRAGANCIAS</h2>
-    <p style="color:#d4af37; font-size:12px; margin:5px 0 0;">PAGO SEGURO CON YAPE • ENVÍOS POR SHALOM Y OLVA</p>
+    <h2 style="margin:0; letter-spacing:3px;">IMPERIUM SCENTS</h2>
+    <p style="color:#d4af37; font-size:12px; margin:5px 0 0;">ENVÍOS A TODO EL PERÚ • PAGO DIRECTO CON YAPE</p>
 </header>
 
-<!-- SECCIÓN MASCULINA (14 PERFUMES) -->
+<!-- COLECCIÓN HOMBRES (14) -->
 <div class="seccion-contenedor">
-    <h2 class="seccion-titulo">Colección Masculina (S/ 70.00)</h2>
+    <h2 class="seccion-titulo">Para Él (S/ 70.00)</h2>
     <div class="slider-wrapper">
         <button class="btn-nav btn-prev" onclick="scrollSlider('slider-el', -300)">❮</button>
         <div class="slider-container" id="slider-el">
@@ -108,9 +107,9 @@
     </div>
 </div>
 
-<!-- SECCIÓN FEMENINA (12 PERFUMES) -->
+<!-- COLECCIÓN MUJERES (12) -->
 <div class="seccion-contenedor">
-    <h2 class="seccion-titulo">Colección Femenina (S/ 70.00)</h2>
+    <h2 class="seccion-titulo">Para Ella (S/ 70.00)</h2>
     <div class="slider-wrapper">
         <button class="btn-nav btn-prev" onclick="scrollSlider('slider-ella', -300)">❮</button>
         <div class="slider-container" id="slider-ella">
@@ -131,13 +130,14 @@
     </div>
 </div>
 
+<!-- VENTANA DE PAGO -->
 <div id="modal-pago">
     <div class="contenido-pago">
         <span class="btn-cerrar" onclick="cerrarPago()">&times;</span>
         <h2 style="color: #7422ff; margin: 0;">Finaliza tu Compra</h2>
-        <p style="font-size: 14px;">1. Escanea y paga <b>S/ 70.00</b> con Yape:</p>
+        <p style="font-size: 14px; margin-top:10px;">Paga <b>S/ 70.00</b> con Yape:</p>
         <img src="yape_qr.jpeg" alt="QR Yape" class="qr-yape">
-        <div class="campo"><label>Nombre Completo:</label><input type="text" id="nom"></div>
+        <div class="campo"><label>Nombre:</label><input type="text" id="nom" placeholder="Nombre completo"></div>
         <div class="campo"><label>DNI:</label><input type="text" id="dni"></div>
         <div class="campo"><label>Agencia:</label><select id="age"><option value="SHALOM">SHALOM</option><option value="OLVA">OLVA COURIER</option></select></div>
         <div class="campo"><label>Ciudad / Dirección:</label><input type="text" id="dir"></div>
@@ -149,18 +149,15 @@
 
 <script>
     let prodActual = "";
-    function abrirPago(nombre) { prodActual = nombre; document.getElementById('modal-pago').style.display = 'block'; }
+    function abrirPago(n) { prodActual = n; document.getElementById('modal-pago').style.display = 'block'; }
     function cerrarPago() { document.getElementById('modal-pago').style.display = 'none'; }
     function scrollSlider(id, d) { document.getElementById(id).scrollBy({ left: d, behavior: 'smooth' }); }
     function enviarWhatsApp() {
-        const nom = document.getElementById('nom').value;
-        const dni = document.getElementById('dni').value;
-        const age = document.getElementById('age').value;
-        const dir = document.getElementById('dir').value;
-        if(!nom || !dni || !dir) return alert("Completa todos los datos.");
-        const miNumero = "51945445161"; 
+        const nom = document.getElementById('nom').value, dni = document.getElementById('dni').value, age = document.getElementById('age').value, dir = document.getElementById('dir').value;
+        if(!nom || !dni || !dir) return alert("Completa todos los datos de envío.");
+        const miNum = "51945445161";
         const msj = `Hola Imperium Scents, pagué S/ 70 por: ${prodActual}.\n\nDATOS:\n- Nombre: ${nom}\n- DNI: ${dni}\n- Agencia: ${age}\n- Destino: ${dir}`;
-        window.open("https://wa.me" + miNumero + "?text=" + encodeURIComponent(msj), '_blank');
+        window.open("https://wa.me" + miNum + "?text=" + encodeURIComponent(msj), '_blank');
         cerrarPago();
     }
 </script>
