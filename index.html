@@ -116,21 +116,9 @@
     </div>
 </div>
 
-<!-- MODAL DE PAGO -->
-<div id="modal-pago">
-    <div class="contenido-pago">
-        <span class="btn-cerrar" onclick="cerrarPago()">&times;</span>
-        <h2 style="color: #7422ff;">Finaliza tu Compra</h2>
-        <p>1. Paga <b>S/ 70.00</b> con Yape:</p>
-        <img src="yape_qr.jpeg" alt="QR Yape" class="qr-yape">
-        <div class="campo"><label>Nombre Completo:</label><input type="text" id="nom"></div>
-        <div class="campo"><label>DNI:</label><input type="text" id="dni"></div>
-        <div class="campo"><label>Agencia:</label><select id="age"><option value="SHALOM">SHALOM</option><option value="OLVA">OLVA COURIER</option></select></div>
-        <div class="campo"><label>Ciudad / Dirección:</label><input type="text" id="dir"></div>
-        <button class="btn-finalizar" onclick="enviarWhatsApp()">CONFIRMAR Y ENVIAR 📱</button>
-    </div>
-</div>
-
+<footer>
+    <p>RUC: 10701774162 | Imperium Scents © 2025</p>
+</footer>
 <script>
     let prodActual = "";
 
@@ -143,28 +131,23 @@
         document.getElementById('modal-pago').style.display = 'none'; 
     }
 
-    function moverSlider(id, d) { 
-        document.getElementById(id).scrollBy({ left: d, behavior: 'smooth' }); 
-    }
-
     function enviarWhatsApp() {
-        const nom = document.getElementById('nom').value.trim();
-        const dni = document.getElementById('dni').value.trim();
+        const nom = document.getElementById('nom').value;
+        const dni = document.getElementById('dni').value;
         const age = document.getElementById('age').value;
-        const dir = document.getElementById('dir').value.trim();
+        const dir = document.getElementById('dir').value;
 
         if(!nom || !dni || !dir) {
-            alert("Por favor, llena todos los datos de envío.");
-            return;
+            return alert("Por favor, completa todos los datos de envío.");
         }
 
-        const miNum = "51945445161";
-        const msj = "Hola Imperium Scents, pagué S/ 70 por: " + prodActual + "\n\n*DATOS DE ENVÍO:*" + "\n- Nombre: " + nom + "\n- DNI: " + dni + "\n- Agencia: " + age + "\n- Destino: " + dir;
+        const miNumero = "51945445161"; 
+        const msj = `Hola Imperium Scents, pagué S/ 70 por: ${prodActual}.\n\nDATOS DE ENVÍO:\n- Nombre: ${nom}\n- DNI: ${dni}\n- Agencia: ${age}\n- Destino: ${dir}`;
         
-        const urlFinal = "https://wa.me" + miNum + "?text=" + encodeURIComponent(msj);
+        // RUTA WA.ME (Más segura para celulares)
+        const urlFinal = "https://wa.me/" + miNumero + "?text=" + encodeURIComponent(msj);
+        
         window.open(urlFinal, '_blank');
         cerrarPago();
     }
 </script>
-</body>
-</html>
