@@ -116,6 +116,21 @@
     </div>
 </div>
 
+<!-- MODAL DE PAGO -->
+<div id="modal-pago">
+    <div class="contenido-pago">
+        <span class="btn-cerrar" onclick="cerrarPago()">&times;</span>
+        <h2 style="color: #7422ff;">Finaliza tu Compra</h2>
+        <p>1. Paga <b>S/ 70.00</b> con Yape:</p>
+        <img src="yape_qr.jpeg" alt="QR Yape" class="qr-yape">
+        <div class="campo"><label>Nombre Completo:</label><input type="text" id="nom"></div>
+        <div class="campo"><label>DNI:</label><input type="text" id="dni"></div>
+        <div class="campo"><label>Agencia:</label><select id="age"><option value="SHALOM">SHALOM</option><option value="OLVA">OLVA COURIER</option></select></div>
+        <div class="campo"><label>Ciudad / Dirección:</label><input type="text" id="dir"></div>
+        <button class="btn-finalizar" onclick="enviarWhatsApp()">CONFIRMAR Y ENVIAR 📱</button>
+    </div>
+</div>
+
 <script>
     let prodActual = "Perfume Imperium"; 
 
@@ -164,3 +179,5 @@
         window.location.href = urlWhatsApp;
     }
 </script>
+</body>
+</html>
