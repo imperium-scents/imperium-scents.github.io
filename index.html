@@ -156,19 +156,16 @@
     }
 
     function enviarWhatsApp() {
-        // 1. Obtener valores
         var nombre = document.getElementById('nom').value.trim();
         var documento = document.getElementById('dni').value.trim();
         var agencia = document.getElementById('age').value;
         var direccion = document.getElementById('dir').value.trim();
 
-        // 2. Validación (Si esto falla, saldrá una alerta en tu pantalla)
         if (nombre === "" || documento === "" || direccion === "") {
             alert("⚠️ Por favor, completa todos los datos de envío.");
             return;
         }
 
-        // 3. Preparar mensaje
         var miNum = "51945445161";
         var mensaje = "Hola Imperium Scents, pagué S/ 70 por: " + prodActual + 
                       "\n\n*DATOS DE ENVÍO:*" + 
@@ -177,10 +174,9 @@
                       "\n- Agencia: " + agencia + 
                       "\n- Destino: " + direccion;
 
-        // 4. Enlace directo (wa.me es el más compatible)
+        // URL CORREGIDA: https://wa.me seguido del número
         var urlFinal = "https://wa.me" + miNum + "?text=" + encodeURIComponent(mensaje);
         
-        // 5. Redirección (Esto funciona sí o sí en celular y PC)
         window.location.href = urlFinal;
     }
 </script>
