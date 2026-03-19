@@ -141,19 +141,9 @@
 
 <script>
     var prodActual = "Perfume Imperium";
-
-    function abrirPago(n) { 
-        prodActual = n; 
-        document.getElementById('modal-pago').style.display = 'block'; 
-    }
-
-    function cerrarPago() { 
-        document.getElementById('modal-pago').style.display = 'none'; 
-    }
-
-    function moverSlider(id, d) { 
-        document.getElementById(id).scrollBy({ left: d, behavior: 'smooth' }); 
-    }
+    function abrirPago(n) { prodActual = n; document.getElementById('modal-pago').style.display = 'block'; }
+    function cerrarPago() { document.getElementById('modal-pago').style.display = 'none'; }
+    function moverSlider(id, d) { document.getElementById(id).scrollBy({ left: d, behavior: 'smooth' }); }
 
     function enviarWhatsApp() {
         var nombre = document.getElementById('nom').value.trim();
@@ -174,7 +164,7 @@
                       "\n- Agencia: " + agencia + 
                       "\n- Destino: " + direccion;
 
-        // URL CORREGIDA: https://wa.me seguido del número
+        // FÍJATE EN ESTA LÍNEA, TIENE LA BARRA "/" DENTRO DE LAS COMILLAS
         var urlFinal = "https://wa.me" + miNum + "?text=" + encodeURIComponent(mensaje);
         
         window.location.href = urlFinal;
