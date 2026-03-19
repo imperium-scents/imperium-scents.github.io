@@ -165,7 +165,7 @@
                       "\n- Destino: " + direccion;
 
         // FÍJATE EN ESTA LÍNEA, TIENE LA BARRA "/" DENTRO DE LAS COMILLAS
-        var urlFinal = "https://wa.me" + miNum + "?text=" + encodeURIComponent(mensaje);
+        var urlFinal = "https://wa.me/" + miNum + "?text=" + encodeURIComponent(mensaje);
         
         window.location.href = urlFinal;
     }
